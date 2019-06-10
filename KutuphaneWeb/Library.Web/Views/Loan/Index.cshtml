@@ -1,0 +1,142 @@
+﻿
+@model LoanModelView
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminWebTemplate.cshtml";
+}
+
+<style>
+    table tr td {
+        text-align: center;
+    }
+
+    th {
+        text-align: center;
+    }
+</style>
+
+
+@section Header{
+    Ödünç Verme
+}
+@if (TempData["Basari"] != null)
+{
+    <div class="alert alert-success text-center col-lg-12" style="color:white;">
+        @TempData["Basari"]
+    </div>
+}
+
+
+
+<div class="card card-dark col-lg-12">
+    <div class="card-header">
+
+    </div>
+
+    <div id="books">
+        <div class="card-body p-0">
+            <table class="table table-hover table-striped">
+                <tbody>
+                    <tr>
+                        <th width="40">Resim</th>
+                        <th>Ad</th>
+                        <th>Yazar</th>
+                        <th>Yayın Evi</th>
+                        <th>Sayfa Sayısı</th>
+                        <th>Kategori</th>
+                        <th>Durum</th>
+                        <th width="80">İşlem</th>
+                    </tr>
+                    @foreach (var book in Model.books)
+                    {
+                        <tr>
+
+                            <td><img src="~/Content/Photograph/Book/@book.imageName" width="40" height="40" /></td>
+                            <td>@book.name</td>
+                            <td>@book.writer</td>
+                            <td>@book.publisher</td>
+                            <td>@book.numberOfPages</td>
+                            <td>@book.Category.name</td>
+                            <td>@book.Status.name</td>
+                            <td>
+                                <a onclick="Book(@book.bookID); hide('books', 'users');" class="btn btn-sm btn-warning" title="Ödünç Ver">
+                                    <i class="fa fa-arrow-right"> Ödünç Ver </i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div id="users" style="display:none;">
+        <div class="card-body p-0">
+            <table class="table table-hover table-striped">
+                <tbody>
+                    <tr>
+                        <th width="40">Resim</th>
+                        <th>Ad</th>
+                        <th>Soyad</th>
+                        <th>Email</th>
+                        <th>Telefon</th>
+                        <th width="80">İşlem</th>
+                    </tr>
+                    @foreach (var user in Model.users)
+                    {
+                        <tr>
+                            <td><img src="~/Content/Photograph/User/@user.imageName" width="40" height="40" /></td>
+                            <td>@user.name</td>
+                            <td>@user.surname</td>
+                            <td>@user.email</td>
+                            <td>@user.phoneNumber</td>
+                            <td>
+                                @using (Html.BeginForm("Add", "Loan", FormMethod.Post))
+                                {
+                                    <input type="hidden" value="@user.userID" name="userID" />
+                                    <button type="submit" class="btn btn-sm btn-warning">TAMAMLA</button>
+                                    @*<a href="/Loan/Add/@user.userID" class="btn btn-sm btn-warning" title="Tamamla">
+                                            <i class="fa fa-arrow-right"> Tamamla </i>
+                                        </a>*@
+                                }
+
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">
+    function hide(idGizle, idGoster) {
+        var divGizle = document.getElementById(idGizle);
+        var divGoster = document.getElementById(idGoster);
+        divGizle.style.display = "none";
+        divGoster.style.display = "block";
+    }
+    //function show(id, id2) {
+    //    var divObject = document.getElementById(id);
+    //    var divObject2 = document.getElementById(id2);
+    //    divObject.style.display = "block";
+    //    divObject2.style.display = "none";
+    //}
+</SCRIPT>
+
+
+<script>
+    function Book(id) {
+        $.ajax({
+            url: '/Loan/BookId/' + id,
+            type: 'post',
+            datatype: "application/json",
+            contentType: "text/plain",
+            data: $(this).serialize(),
+            success: function (data, textStatus, jQxhr) {
+            },
+            error: function (jqXhr, textStatus, errorThrown) {
+                console.log(errorThrown);
+            }
+        });
+    }
+</script>

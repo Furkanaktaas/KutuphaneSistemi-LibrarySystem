@@ -1,0 +1,61 @@
+﻿@model List<User>
+@{
+    ViewBag.Title = "Kullanıcılar";
+    Layout = "~/Views/Shared/_AdminWebTemplate.cshtml";
+}
+
+<style>
+    table tr td {
+        text-align: center;
+    }
+
+    th {
+        text-align: center;
+    }
+</style>
+@section Header{
+    Kullanıcılar
+
+    <a href="/User/Add" class="btn btn-warning" title="Kullanıcı Ekle">
+        <i class="fa fa-plus" style="color:black;"> Yeni Kullanıcı </i>
+    </a>
+}
+
+<div class="card card-dark col-lg-12">
+    <div class="card-header">
+
+    </div>
+    <div class="card-body p-0">
+        <table class="table table-hover table-striped">
+            <tbody>
+                <tr>
+                    <th>Resim</th>
+                    <th>Ad</th>
+                    <th>Soyad</th>
+                    <th>Email</th>
+                    <th>Telefon Numarası</th>
+                    <th>Yetki</th>
+                    @*<th style="width:350px;">İşlemler</th>*@
+                </tr>
+                @foreach (var user in Model)
+                {
+                    <tr>
+                        <td><img src="~/Content/Photograph/User/@user.imageName" width="40" height="40" /></td>
+                        <td>@user.name</td>
+                        <td>@user.surname</td>
+                        <td>@user.email</td>
+                        <td>@user.phoneNumber</td>
+                        <td>@user.Authorization.name</td>
+                        @*<td>
+                            <a href="/User/Detail/@user.userID" class="btn btn-sm btn-dark" title="Detay">
+                                <i class="fa fa-search" > Detay </i>
+                            </a>
+                        </td>*@
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <!-- /.card-body -->
+</div>
+

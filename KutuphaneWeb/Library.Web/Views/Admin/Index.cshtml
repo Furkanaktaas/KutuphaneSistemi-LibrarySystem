@@ -1,0 +1,64 @@
+﻿
+@{
+    ViewBag.Title = "Anasayfa";
+}
+@section Header{
+    Anasayfa
+}
+
+<div class="col-lg-3 col-6 ">
+    <!-- small box -->
+    <div class="small-box bg-success">
+        <div class="inner">
+
+            <h3>@Session["ReserveCount"]</h3>
+            <p>Rezerve Sayısı</p>
+        </div>
+        <div class="icon">
+            <i class="ion ion-stats-bars"></i>
+        </div>
+    </div>
+</div>
+<div class="col-lg-3 col-6">
+    <!-- small box -->
+    <div class="small-box bg-info">
+        <div class="inner">
+            <h3>@Session["LoanCount"]</h3>
+
+            <p>Ödünç Sayısı</p>
+        </div>
+        <div class="icon">
+            <i class="fa fa-tasks"></i>
+        </div>
+    </div>
+</div>
+<div class="col-lg-3 col-6 ">
+    <!-- small box -->
+    <div class="small-box bg-warning">
+        <div class="inner">
+            <h3>@Session["BookCount"]</h3>
+
+            <p>Kayıtlı Kitap Sayısı</p>
+        </div>
+        <div class="icon">
+            <i class="fa fa-book"></i>
+        </div>
+    </div>
+</div>
+<div class="col-lg-3 col-6 ">
+    <!-- small box -->
+    <div class="small-box bg-dark">
+        <div class="inner">
+            <h3>@Session["UserCount"] </h3>
+
+            <p>Kayıtlı Kullanıcı Sayısı</p>
+        </div>
+        <div class="icon">
+            <i class="ion ion-person"></i>
+        </div>
+    </div>
+</div>
+
+
+
+

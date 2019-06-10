@@ -1,0 +1,51 @@
+﻿@model List<Book>
+@{
+    ViewBag.Title = "Ekle";
+    Layout = "~/Views/Shared/_AdminWebTemplate.cshtml";
+}
+
+<div class="card card-dark col-lg-12">
+    <div class="card-header">
+
+    </div>
+    <div class="card-body p-0">
+        <table class="table table-hover table-striped">
+            <tbody>
+                <tr>
+                    <th>Resim</th>
+                    <th>Ad</th>
+                    <th>Yazar</th>
+                    <th>Yayın Evi</th>
+                    <th>Sayfa Sayısı</th>
+                    <th>Kategori</th>
+                    <th>Durum</th>
+                    <th>İşlem</th>
+                </tr>
+                @foreach (var book in Model)
+                {
+                    <tr>
+                        <td><img src="~/Content/Photograph/Book/@book.imageName" width="40" height="40" /></td>
+                        <td>@book.name</td>
+                        <td>@book.writer</td>
+                        <td>@book.publisher</td>
+                        <td>@book.numberOfPages</td>
+                        <td>@book.Category.name</td>
+                        <td>@book.Status.name</td>
+                        <td>
+                            @using (Html.BeginForm("Add", "Reserve", FormMethod.Post))
+                            {
+                                <input type="hidden" value="@book.bookID" name="bookID" />
+                                <button type="submit" class="btn btn-sm btn-warning">REZERVE ET</button>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <!-- /.card-body -->
+</div>
+
+
+
+

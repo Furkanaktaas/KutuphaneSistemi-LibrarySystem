@@ -1,0 +1,58 @@
+﻿@model List<Book>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminWebTemplate.cshtml";
+}
+
+<style>
+    table tr td {
+        text-align: center;
+    }
+
+    th {
+        text-align: center;
+    }
+</style>
+@section Header{
+    Kitaplar
+
+    <a href="/Book/Add" class="btn btn-warning" title="Kullanıcı Ekle">
+        <i class="fa fa-plus" style="color:black;"> Yeni Kitap </i>
+    </a>
+}
+
+<div class="card card-dark col-lg-12">
+    <div class="card-header">
+
+    </div>
+    <div class="card-body p-0">
+        <table class="table table-hover table-striped">
+            <tbody>
+                <tr>
+                    <th>Resim</th>
+                    <th>Ad</th>
+                    <th>Yazar</th>
+                    <th>Yayın Evi</th>
+                    <th>Sayfa Sayısı</th>
+                    <th>Kategori</th>
+                    <th>Durum</th>
+                </tr>
+                @foreach (var book in Model)
+                {
+                    <tr>
+                        <td><img src="~/Content/Photograph/Book/@book.imageName" width="40" height="40" /></td>
+                        <td>@book.name</td>
+                        <td>@book.writer</td>
+                        <td>@book.publisher</td>
+                        <td>@book.numberOfPages</td>
+                        <td>@book.Category.name</td>
+                        <td>@book.Status.name</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <!-- /.card-body -->
+</div>
+
+

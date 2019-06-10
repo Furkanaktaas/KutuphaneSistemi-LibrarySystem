@@ -1,0 +1,56 @@
+﻿@model List<Loan>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminWebTemplate.cshtml";
+}
+
+@section Header{
+    Kitap Geri Alma
+}
+@if (TempData["Basari"] != null)
+{
+    <div class="alert alert-success text-center col-lg-12" style="color:white;">
+        @TempData["Basari"]
+    </div>
+}
+<div class="card card-dark col-lg-12">
+    <div class="card-header">
+
+    </div>
+    <div class="card-body p-0">
+        <table class="table table-hover table-striped">
+            <tbody>
+                <tr>
+                    <th width="40"> Kulanıcı Resim</th>
+                    <th> Ad</th>
+                    <th> Soyad</th>
+                    <th> Email</th>
+                    <th width="40">Kitap Resim</th>
+                    <th> Ad</th>
+                    <th> Yazar</th>
+                    <th> Kategori</th>
+                    <th width="50"> İşlem</th>
+                </tr>
+                @foreach (var pastLoan in Model)
+                {
+                    <tr>
+                        <td><img src="~/Content/Photograph/User/@pastLoan.User.imageName" width="40" height="40" /></td>
+                        <td>@pastLoan.User.name</td>
+                        <td>@pastLoan.User.surname</td>
+                        <td>@pastLoan.User.email</td>
+                        <td><img src="~/Content/Photograph/Book/@pastLoan.Book.imageName" width="40" height="40" /></td>
+                        <td>@pastLoan.Book.name</td>
+                        <td>@pastLoan.Book.writer</td>
+                        <td>@pastLoan.Book.Category.name</td>
+                        <td>
+                            <a href="/TakeBackBook/Receive/@pastLoan.loanID" class="btn btn-sm btn-warning"   title="Sil">
+                                <i class="fa fa-check" style="color:black;"> Teslim Al </i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <!-- /.card-body -->
+</div>

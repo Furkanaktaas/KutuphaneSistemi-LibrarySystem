@@ -1,0 +1,56 @@
+﻿@model User
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8" />
+    <title>Giriş</title>
+    <link href="~/Content/LoginTemplate/css/style.css" rel='stylesheet' type='text/css' />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!--webfonts-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,400,300,600,700' rel='stylesheet' type='text/css'>
+    <style>
+    </style>
+
+
+</head>
+<body>
+    <div class="login-form">
+        <h1>
+            KÜTÜPHANE SİSTEMİ
+        </h1>
+        @using (Html.BeginForm("Index", "Login", FormMethod.Post))
+        {
+            <ul>
+                <li style="background:black;margin-bottom:5%;border:none; text-align:center;color:yellow;font-size:20px;  ">
+                    @if (ViewBag.Hata != null)
+                    {
+                        <div class="alert alert-dark">
+                            @ViewBag.Hata
+                        </div>
+                    }
+                </li>
+                <li>
+                    <label class="düzen"><i class=" icon user"></i></label>
+                    @Html.TextBoxFor(x => x.email, new { placeholder = "Eposta" })
+                </li>
+                <li>
+                    <label class="düzen"><i class=" icon lock"></i></label>
+                    @Html.PasswordFor(x => x.password, new { placeholder = "Şifre" })
+
+                </li>
+            </ul>
+            <div class="forgot">
+                <h3><a href="#">Şifremi Unuttum ?</a></h3>
+                <input type="submit" value="Giriş Yap"> <a href="#" class=" icon arrow"></a>
+            </div>
+        }
+    </div>
+</body>
+</html>
+

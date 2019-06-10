@@ -1,0 +1,12 @@
+C:\Users\furka\Desktop\LibrarySystem\Library.DataBase\bin\Debug\Library.DataBase.dll.config
+C:\Users\furka\Desktop\LibrarySystem\Library.DataBase\bin\Debug\Library.DataBase.dll
+C:\Users\furka\Desktop\LibrarySystem\Library.DataBase\bin\Debug\Library.DataBase.pdb
+C:\Users\furka\Desktop\LibrarySystem\Library.DataBase\bin\Debug\EntityFramework.dll
+C:\Users\furka\Desktop\LibrarySystem\Library.DataBase\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\furka\Desktop\LibrarySystem\Library.DataBase\bin\Debug\EntityFramework.xml
+C:\Users\furka\Desktop\LibrarySystem\Library.DataBase\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\furka\Desktop\LibrarySystem\Library.DataBase\obj\Debug\Library.DataBase.csproj.CoreCompileInputs.cache
+C:\Users\furka\Desktop\LibrarySystem\Library.DataBase\obj\Debug\Library.DataBase.csproj.CopyComplete
+C:\Users\furka\Desktop\LibrarySystem\Library.DataBase\obj\Debug\Library.DataBase.dll
+C:\Users\furka\Desktop\LibrarySystem\Library.DataBase\obj\Debug\Library.DataBase.pdb
+C:\Users\furka\Desktop\LibrarySystem\Library.DataBase\obj\Debug\Library.DataBase.csprojAssemblyReference.cache

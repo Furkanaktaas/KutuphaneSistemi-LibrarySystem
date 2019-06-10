@@ -1,0 +1,88 @@
+﻿@model User
+@{
+    ViewBag.Title = "Kullanıcı Ekle";
+    Layout = "~/Views/Shared/_AdminWebTemplate.cshtml";
+}
+
+<style>
+    .field-validation-error {
+        background-color: #343a40;
+        color: #ffc107;
+        border-radius: 5px;
+        padding: 4px;
+    }
+
+    .area {
+        height: 100px;
+    }
+</style>
+
+<div class="card card-dark col-lg-12" style="margin-top:-40px;">
+    <div class="card-header" >
+        Kullanıcı Ekle
+    </div>
+    <div class="card-body">
+        @if (ViewBag.Hata != null)
+        {
+        <div class="alert alert-danger text-center">
+            @ViewBag.Hata
+        </div>
+        }
+        @if (TempData["Basari"] != null)
+        {
+            <div class="alert alert-success text-center" style="color:white;">
+                @TempData["Basari"]
+            </div>
+        }
+        @using (Html.BeginForm("Add", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="form-row">
+                <div class="form-group col-lg-4 offset-lg-1">
+                    <label for="inputEmail4">Ad:</label>
+                    @Html.TextBoxFor(x => x.name, new { @class = "form-control arkaplan" })
+                    @Html.ValidationMessageFor(x => x.name)
+                </div>
+                <div class="form-group col-lg-4 offset-lg-2">
+                    <label for="inputEmail4">Soyad:</label>
+                    @Html.TextBoxFor(x => x.surname, new { @class = "form-control arkaplan" })
+                    @Html.ValidationMessageFor(x => x.surname)
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-lg-4 offset-lg-1">
+                    <label for="inputEmail4">Email:</label>
+                    @Html.TextBoxFor(x => x.email, new { @class = "form-control arkaplan" })
+                    @Html.ValidationMessageFor(x => x.email)
+                </div>
+                <div class="form-group col-lg-4 offset-lg-2">
+                    <label for="inputEmail4">Telefon:</label>
+                    @Html.TextBoxFor(x => x.phoneNumber, new { @class = "form-control arkaplan" })
+                    @Html.ValidationMessageFor(x => x.phoneNumber)
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-lg-4 offset-lg-1">
+                    <label for="inputEmail4">Yetki:</label>
+                    @Html.DropDownList("authorizationID", (SelectList)ViewBag.Authorization, new { @class = "form-control" })
+                </div>
+                <div class="form-group col-lg-4 offset-lg-2">
+                    <label for="inputEmail4">Şifre:</label>
+                    @Html.PasswordFor(x => x.password, new { @class = "form-control arkaplan" })
+                    @Html.ValidationMessageFor(x => x.password)
+                </div>
+            </div>
+            <div class="form-row justify-content-center">
+                <div class="form-group col-lg-4 ">
+                    <label for="inputEmail4">Resim:</label>
+                    <input type="file" class="form-control arkaplan" name="image">
+                </div>
+            </div>
+            <div class="form-row justify-content-lg-center">
+                <div class="form-group col-lg-4">
+                    <label for="inputEmail4"></label>
+                    <button type="submit" class="btn btn-dark col-lg-12" style="color:#ffc107;">KAYDET</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>

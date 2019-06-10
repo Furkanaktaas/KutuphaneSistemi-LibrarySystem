@@ -1,0 +1,69 @@
+﻿@model List<Reserve>
+@{
+    ViewBag.Title = "Rezerve";
+    Layout = "~/Views/Shared/_AdminWebTemplate.cshtml";
+    User user = (User)Session["User"];
+}
+@section Header{
+    Rezerve Edilmiş Kitaplar
+    @if (user.userID != 1)
+    {
+
+        <a href="/Reserve/Add" class="btn btn-warning" title="Rezerve Ekle">
+            <i class="fa fa-plus" style="color:black;"> Yeni Rezerve </i>
+        </a>
+    }
+}
+@if (TempData["Basari"] != null)
+{
+    <div class="alert alert-success text-center col-lg-12" style="color:white;">
+        @TempData["Basari"]
+    </div>
+}
+<div class="card card-dark col-lg-12">
+    <div class="card-header">
+
+    </div>
+    <div class="card-body p-0">
+        <table class="table table-hover table-striped">
+            <tbody>
+                <tr>
+                    <th width="40"> Kulanıcı Resim</th>
+                    <th> Ad</th>
+                    <th> Soyad</th>
+                    <th> Email</th>
+                    <th width="40">Kitap Resim</th>
+                    <th> Ad</th>
+                    <th> Yazar</th>
+                    <th> Kategori</th>
+                    <th width="250"> İşlem</th>
+                </tr>
+                @foreach (var reserve in Model)
+                {
+                    <tr>
+                        <td><img src="~/Content/Photograph/User/@reserve.User.imageName" width="40" height="40" /></td>
+                        <td>@reserve.User.name</td>
+                        <td>@reserve.User.surname</td>
+                        <td>@reserve.User.email</td>
+                        <td><img src="~/Content/Photograph/Book/@reserve.Book.imageName" width="40" height="40" /></td>
+                        <td>@reserve.Book.name</td>
+                        <td>@reserve.Book.writer</td>
+                        <td>@reserve.Book.Category.name</td>
+                        <td>
+                            @if (user.authorizationID == 1)
+                            {
+                                <a href="/Reserve/Give/@reserve.reserveID" class="btn btn-sm btn-warning" title="Ödünç Ver">
+                                    <i class="fa fa-check" style="color:black;"> Ödünç Ver </i>
+                                </a>
+                            }
+                            <a href="/Reserve/Delete/@reserve.reserveID" class="btn btn-sm btn-danger" title="Sil">
+                                <i class="fa fa-remove"> İptal Et </i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <!-- /.card-body -->
+</div>

@@ -1,0 +1,80 @@
+﻿@model User
+@{
+    ViewBag.Title = "MyProfile";
+    Layout = "~/Views/Shared/_AdminWebTemplate.cshtml";
+}
+
+<style>
+    .field-validation-error {
+        background-color: #343a40;
+        color: #ffc107;
+        border-radius: 5px;
+        padding: 4px;
+    }
+
+    .area {
+        height: 100px;
+    }
+</style>
+
+<div class="card card-dark col-lg-12" style="margin-top:-40px;">
+    <div class="card-header " >
+        PROFİLİM
+    </div>
+    <div class="card-body">
+        @if (ViewBag.Basari != null)
+        {
+            <div class="alert alert-success text-center" style="color:white;">
+                @ViewBag.Basari
+            </div>
+        }
+        @using (Html.BeginForm("MyProfile", "Admin", FormMethod.Post))
+        {
+            @Html.HiddenFor(x => x.userID)
+            <div class="form-row justify-content-center">
+                <div class="form-group col-lg-3">
+                    <img height="200" width="200" src="~/Content/Photograph/User/@Model.imageName" />
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-lg-4 offset-lg-1">
+                    <label for="inputEmail4">Ad:</label>
+                    @Html.TextBoxFor(x => x.name, new { @class = "form-control arkaplan", @readonly = "readonly" })
+                </div>
+                <div class="form-group col-lg-4 offset-lg-2">
+                    <label for="inputEmail4">Soyad:</label>
+                    @Html.TextBoxFor(x => x.surname, new { @class = "form-control arkaplan", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-lg-4 offset-lg-1">
+                    <label for="inputEmail4">Email:</label>
+                    @Html.TextBoxFor(x => x.email, new { @class = "form-control arkaplan", @readonly = "readonly" })
+                </div>
+                <div class="form-group col-lg-4 offset-lg-2">
+                    <label for="inputEmail4">Telefon:</label>
+                    @Html.TextBoxFor(x => x.phoneNumber, new { @class = "form-control arkaplan", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-lg-4 offset-lg-1">
+                    <label for="inputEmail4">Yetki:</label>
+                    @Html.TextBoxFor(x => x.Authorization.name, new { @class = "form-control arkaplan", @readonly = "readonly" })
+                </div>
+                <div class="form-group col-lg-4 offset-lg-2">
+                    <label for="inputEmail4">Şifre:</label>
+                    @Html.TextBoxFor(x => x.password, new { @class = "form-control arkplan" })
+                    @Html.ValidationMessageFor(x => x.password);
+                </div>
+            </div>
+
+            <div class="form-row justify-content-lg-center">
+                <div class="form-group col-lg-4">
+                    <label for="inputEmail4"></label>
+                    <button type="submit" class="btn btn-dark col-lg-12" style="color:#ffc107;">KAYDET</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
