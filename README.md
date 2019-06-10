@@ -1,7 +1,7 @@
 # KutuphaneSistemi-LibrarySystem
 Kütüphane Sistemi ve Android Uygulaması / Library System and Android Application
 
-Kütüphanedeki işleyişi kayıt altına almak için geliştirilmiş bir web uygulaması ve android uygulamasıdır. Web tarafında kitap işlemleri, kullanıcı işlemleri, rezerve işlemleri, ödünç işlemleri yapılabilmektedir. Android tarafında kitap rezerve işlemleri yapılabilmektedir. Asp.Net MVC, Entity Framework, Mssql ve Rest API kullanılmıştır. 
+Kütüphanedeki işleyişi kayıt altına almak için geliştirilmiş bir web uygulaması ve android uygulamasıdır. Web tarafında kitap işlemleri, kullanıcı işlemleri, rezerve işlemleri, ödünç işlemleri yapılabilmektedir. Android tarafında kitap rezerve işlemleri yapılabilmektedir. Katmanlı Mimari, Asp.Net MVC, Entity Framework, Mssql ve Rest API kullanılmıştır. 
 
 100'den fazla dosya olduğundan, lütfen projeyi rar olarak indirin. Daha sonra dosyaları birleştirerek projeyi çalıştırın.
 
