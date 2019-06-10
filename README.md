@@ -5,6 +5,6 @@ Kütüphanedeki işleyişi kayıt altına almak için geliştirilmiş bir web uy
 
 100'den fazla dosya olduğundan, lütfen projeyi rar olarak indirin. Daha sonra dosyaları birleştirerek projeyi çalıştırın.
 
-It is a web application and android application developed to record the functioning of the library. On the Web side, book transactions, user transactions, reserve transactions and loan transactions can be made. Book reserve operations can be done on Android. Asp.Net MVC, Entity Framework, Mssql and Rest API were used.
+It is a web application and android application developed to record the functioning of the library. On the Web side, book transactions, user transactions, reserve transactions and loan transactions can be made. Book reserve operations can be done on Android.Layered architecture, Asp.Net MVC, Entity Framework, Mssql and Rest API were used.
 
 Since there are more than 100 files, please download the project as rar. Remember to merge files.
